@@ -1,108 +1,116 @@
-# customer_trends_data_analysis_SQL-Python-PowerBI
-Customer Shopping Behavior Analysis
-📌 Project Overview
-This project analyzes customer shopping behavior using transactional data from 3,900 purchases across various product categories. The primary goal is to uncover insights into spending patterns, customer segments, product preferences, and subscription behavior to guide strategic business decisions.
+🛍️ Customer Shopping Behavior Analysis
 
+SQL • Python • Power BI
 
-📂 Dataset Summary
-The dataset contains 3,900 rows and 18 columns. It includes the following key features:
+This project analyzes 3,900 customer shopping transactions to uncover insights into spending patterns, product preferences, customer segments, and subscription behavior. The analysis combines Python for EDA, PostgreSQL for business queries, and Power BI for dashboarding.
 
+📘 1. Project Overview
 
-Customer Demographics: Age, Gender, Location, Subscription Status.
+The goal of this project is to understand customer shopping behavior and drive data-backed business decisions.
+We explored relationships between demographics, purchase behavior, discounts, shipping types, and review ratings.
 
+🗂️ 2. Dataset Summary
 
-Purchase Details: Item Purchased, Category, Purchase Amount, Season, Size, Color.
+Rows: 3,900
 
+Columns: 18
 
-Shopping Behavior: Discount Applied, Promo Code Used, Previous Purchases, Frequency of Purchases, Review Rating, Shipping Type.
+Key Features:
 
+Customer demographics (Age, Gender, Location, Subscription Status)
 
-Data Quality: There were 37 missing values in the 'Review Rating' column which required handling.
+Purchase details (Item, Category, Amount, Season, Size, Color)
 
-🛠 Tech Stack
+Behavioral fields (Discount Applied, Promo Code, Previous Purchases, Frequency, Rating, Shipping Type)
 
-Python (Pandas): Data cleaning, preprocessing, and feature engineering.
+Missing Values: 37 missing ratings (imputed using median per category)
 
+🐍 3. Exploratory Data Analysis (Python)
 
-SQL (PostgreSQL): Structured data analysis and solving business questions.
+Performed detailed data cleaning and preparation:
 
+✔ Data Cleaning
 
+Loaded data using pandas
 
-Power BI: Interactive dashboard creation for visual insights.
+Standardized column names to snake_case
 
-⚙️ Methodology
-1. Data Preparation & Cleaning (Python)
-Before analysis, the raw data was processed using Python:
+Imputed missing review_rating values
 
+Checked redundancy between discount_applied and promo_code_used → removed promo code
 
-Missing Data Handling: Imputed null values in the Review Rating column using the median rating of each product category.
+Feature engineering:
 
+age_group (binned ages)
 
-Standardization: Renamed columns to "snake_case" for better readability and consistency.
+purchase_frequency_days
 
-Feature Engineering:
+✔ Database Integration
 
-Created an age_group column by binning customer ages.
+Loaded cleaned dataset into PostgreSQL using SQLAlchemy for SQL-based business analysis.
 
-Derived a purchase_frequency_days column from purchase data.
+🛢️ 4. SQL Analysis (PostgreSQL)
 
+Executed analytical SQL queries to answer business questions:
 
-Optimization: Dropped redundant columns (e.g., promo_code_used) after consistency checks.
+Revenue by Gender
 
+High-Spending Discount Users
 
-Database Integration: Loaded the cleaned DataFrame into PostgreSQL for SQL analysis.
+Top 5 Products by Review Rating
 
-2. Exploratory Data Analysis (SQL)
-Key business questions were answered using SQL queries:
+Shipping Type: Standard vs. Express Spend Comparison
 
+Subscriber vs. Non-Subscriber Spending
 
-Revenue by Gender: Male customers generated $157,890 in revenue compared to $75,191 by Female customers.
+Products Most Dependent on Discounts
 
+Customer Segmentation: New, Returning, Loyal
 
+Top 3 Best-Selling Products per Category
 
-Top Products: Identified top-rated products, with "Gloves" achieving the highest average rating of 3.86.
+Subscription Likelihood of Repeat Buyers (>5 purchases)
 
+Revenue Contribution by Age Group
 
-Shipping Analysis: Express shipping users had a slightly higher average purchase amount ($60.48) than Standard shipping users ($58.46).
+📊 5. Power BI Dashboard
 
+Created an interactive dashboard highlighting:
 
-Customer Segmentation: The majority of customers (3,116) fall into the "Loyal" segment.
+Revenue trends
 
+Subscriber vs. non-subscriber behavior
 
-Age Demographics: The "Young Adult" group contributed the highest total revenue ($62,143).
+Demographic insights
 
-3. Visualization (Power BI)
-An interactive dashboard was built to track KPIs and trends:
+Top-rated & top-selling products
 
+Discount analysis
 
-Total Customers: 3.9K.
+Shipping preferences
 
+The dashboard helps decision-makers quickly identify growth opportunities.
 
-Average Purchase Amount: $59.76.
+💡 6. Business Recommendations
 
+Based on the analysis:
 
-Average Review Rating: 3.75.
+Boost Subscriptions through targeted benefits
 
+Implement Loyalty Programs for repeat buyers
 
-Visuals Included: Revenue by Category, Sales by Age Group, and Subscription Status distribution.
+Optimize Discount Strategy to protect margins
 
+Promote High-Rated & Best-Selling Products
 
+Run Targeted Marketing Campaigns for top age groups and express-shipping users
 
-📊 Key Insights & Business Recommendations
-Based on the analysis, the following strategies are recommended:
+📦 Tech Stack
 
+Python: Pandas, NumPy, Matplotlib/Seaborn
 
-Boost Subscriptions: Promote exclusive benefits to convert non-subscribers, as only 27% of customers are currently subscribed.
+Database: PostgreSQL
 
+Visualization: Power BI
 
-
-Customer Loyalty: Implement programs to reward repeat buyers and maintain the large "Loyal" customer segment.
-
-
-Targeted Marketing: Focus marketing efforts on high-revenue groups, specifically Young Adults and customers opting for Express Shipping.
-
-
-Product Positioning: Highlight top-rated products (e.g., Gloves, Sandals) and discount-dependent items (e.g., Hats, Sneakers) in campaigns.
-
-
-This project demonstrates the end-to-end data analysis lifecycle from Python preprocessing to SQL querying and Power BI visualization.
+Tools: SQLAlchemy, Jupyter Notebook
